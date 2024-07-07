@@ -41,10 +41,14 @@ class ClientMainActivity: AppCompatActivity() {
         }
 
 
-        // 추천 프리랜서 목록
+        // 추천 프리랜서 목록 (-> 클릭 시 프리랜서 디테일 화면)
         recommendedFreelancerAdapter = FreelancerAdapter {
-            // onClick (프리랜서 상세 페이지)
+            val intent = Intent(this@ClientMainActivity, FreelancerDetailActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            intent.putExtra("freelancerId", it.freelancerId)
+            startActivity(intent)
         }
+
         binding.recommendedFreelancerRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = recommendedFreelancerAdapter

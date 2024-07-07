@@ -36,7 +36,10 @@ class SearchFreelancerResultActivity: AppCompatActivity() {
         Log.e("SearchResultActivity", "clientId: ${clientId}")
 
         freelancerAdapter = FreelancerAdapter {
-            // TODO
+            val intent = Intent(this@SearchFreelancerResultActivity, FreelancerDetailActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            intent.putExtra("freelancerId", it.freelancerId)
+            startActivity(intent)
         }
 
         binding.searchResultDescription.text = "'${keyword}'에 대한 검색 결과"

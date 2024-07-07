@@ -32,6 +32,7 @@
         <activity android:name=".activity.ClientCreateProjectActivity" />
         <activity android:name=".activity.KeywordSearchActivity" />
         <activity android:name=".activity.SearchFreelancerResultActivity" />
+        <activity android:name=".activity.FreelancerDetailActivity" />
     </application>
 
 </manifest>

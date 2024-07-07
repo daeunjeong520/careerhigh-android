@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".FreelancerDetail">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topBar"
+        style="@style/CustomToolbarStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:padding="10dp"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+            style="@style/ToolbarTextStyle"
+            android:text="프리랜서 상세" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btnRequest"
+        app:layout_constraintTop_toBottomOf="@id/topBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="22dp">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/userc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/freelancerName"
+                style="@style/BlackBold18Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold"
+                android:text="홍길동"
+                app:layout_constraintEnd_toStartOf="@+id/btnBookmark"
+                app:layout_constraintStart_toEndOf="@id/profileImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBookmark"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:backgroundTint="@color/white"
+                app:icon="@drawable/ic_bookmark_border"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/ripple_color" />
+
+            <TextView
+                android:id="@+id/workStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="원격"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/freelancerName"
+                app:layout_constraintTop_toBottomOf="@id/freelancerName" />
+
+            <TextView
+                android:id="@+id/labelJobGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="직군/직무"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profileImage" />
+
+            <TextView
+                android:id="@+id/labelJobSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:text="스킬"
+                app:layout_constraintStart_toStartOf="@id/labelJobGroup"
+                app:layout_constraintTop_toBottomOf="@id/labelJobGroup" />
+
+            <TextView
+                android:id="@+id/labelCareer"
+                style="@style/Black14Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
+                android:text="경력"
+                app:layout_constraintStart_toStartOf="@id/labelJobGroup"
+                app:layout_constraintTop_toBottomOf="@id/labelJobSkill" />
+
+            <TextView
+                android:id="@+id/labelStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple"
+                android:text="시작 가능일"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelJobGroup"
+                app:layout_constraintTop_toBottomOf="@id/labelCareer" />
+
+            <TextView
+                android:id="@+id/labelStarRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple"
+                android:text="평점"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelJobGroup"
+                app:layout_constraintTop_toBottomOf="@id/labelStartDate" />
+
+            <TextView
+                android:id="@+id/JobGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="개발 > "
+                app:layout_constraintBaseline_toBaselineOf="@id/labelJobGroup"
+                app:layout_constraintStart_toStartOf="@id/StartDate" />
+
+            <TextView
+                android:id="@+id/Job"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="서버개발"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelJobGroup"
+                app:layout_constraintStart_toEndOf="@+id/JobGroup"
+                />
+
+            <TextView
+                android:id="@+id/JobSkill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Java, Spring Framework"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelJobSkill"
+                app:layout_constraintStart_toStartOf="@id/StartDate" />
+
+            <TextView
+                android:id="@+id/Proficiency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="중급"
+                android:background="@color/light_purple"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelJobSkill"
+                app:layout_constraintStart_toEndOf="@+id/JobSkill"
+                />
+
+            <TextView
+                android:id="@+id/Career"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="5년 이상"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelCareer"
+                app:layout_constraintStart_toStartOf="@id/StartDate" />
+
+            <TextView
+                android:id="@+id/StartDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2024-04-06"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelStartDate"
+                app:layout_constraintStart_toEndOf="@id/labelStartDate" />
+
+            <TextView
+                android:id="@+id/StarRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:layout_marginStart="58dp"
+                android:background="@color/dark_gray"
+                android:textColor="@color/white"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelStarRating"
+                app:layout_constraintStart_toEndOf="@id/labelStarRating" />
+
+
+
+            <TextView
+                android:id="@+id/labelFreelancerIntroduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="[상세 소개]"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelStartDate" />
+
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="서버 개발은 제가 가장 자신 있습니다!!"
+                app:layout_constraintStart_toStartOf="@id/labelJobGroup"
+                app:layout_constraintTop_toBottomOf="@id/labelFreelancerIntroduction" />
+
+            <TextView
+                android:id="@+id/labelLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:text="[링크]"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <TextView
+                android:id="@+id/Link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="https://github.com/hongglidong"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelLink" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btnRequest"
+        style="@style/PurpleOneButton"
+        android:layout_width="match_parent"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="3dp"
+        android:text="의뢰하기"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/myProjects"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_my_projects" />
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/myPage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_my_page" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="topBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
