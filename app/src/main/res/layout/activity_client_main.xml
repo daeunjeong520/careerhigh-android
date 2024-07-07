@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ClientMainActivity">
+
+    <!-- Header -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topBar"
+        style="@style/CustomToolbarStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/ToolbarTextStyle"
+            android:text="클라이언트" />
+
+        <ImageButton
+            android:id="@+id/btnNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/notifications"
+            android:padding="10dp"
+            android:layout_marginEnd="8dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- 검색창 -->
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="검색"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/searchMethod"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnKeywordSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
+
+            android:textColor="@color/dark_gray"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/dark_gray"
+            app:strokeWidth="1dp"
+            app:cornerRadius="2dp"
+            android:text="프로젝트 제목, 스킬"
+            android:textAlignment="textStart"
+            android:drawableEnd="@drawable/ic_search"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            app:rippleColor="@color/ripple_color"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMapSearch"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="6dp"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/dark_gray"
+            app:strokeWidth="1dp"
+            app:cornerRadius="2dp"
+            app:icon="@drawable/ic_map_search"
+            app:iconTint="@color/black"
+            app:iconGravity="textStart"
+            app:iconSize="28dp"
+            app:iconPadding="0dp"
+            app:rippleColor="@color/ripple_color" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilterSearch"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/dark_gray"
+            app:strokeWidth="1dp"
+            app:cornerRadius="2dp"
+            app:icon="@drawable/ic_filter_search"
+            app:iconTint="@color/black"
+            app:iconGravity="textStart"
+            app:iconSize="28dp"
+            app:iconPadding="0dp"
+            android:layout_marginEnd="12dp"
+            app:rippleColor="@color/ripple_color"/>
+    </LinearLayout>
+
+    <!-- 인기 프리랜서 -->
+    <TextView
+        android:id="@+id/textPopularFreelancer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인기 프리랜서"
+        style="@style/BlackBold16Text"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/searchMethod"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollPopular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/textPopularFreelancer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- 인기 프로젝트 아이템 (예시) -->
+            <include layout="@layout/item_popular_freelancer" />
+            <include layout="@layout/item_popular_freelancer" />
+            <include layout="@layout/item_popular_freelancer" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- 추천 프리랜서 -->
+    <TextView
+        android:id="@+id/textRecommendedFreelancer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="추천 프리랜서"
+        style="@style/BlackBold16Text"
+        app:layout_constraintTop_toBottomOf="@id/horizontalScrollPopular"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="18dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommendedFreelancerRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textRecommendedFreelancer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_recommended_freelancer"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

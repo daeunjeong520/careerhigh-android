@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="330dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/purple"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/coco"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/freelancerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="홍길동"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@id/profileImage"
+            app:layout_constraintTop_toTopOf="@id/profileImage"
+            app:layout_constraintEnd_toStartOf="@id/btnBookmark" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBookmark"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:backgroundTint="@color/purple"
+            app:icon="@drawable/ic_bookmark_border"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="@color/white"
+            app:rippleColor="@color/ripple_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/workStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상주/원격"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/freelancerName"
+            app:layout_constraintTop_toBottomOf="@id/freelancerName"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/Job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="# 프론트엔드 개발자"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/profileImage"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tvCareer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경력:"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/Job"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/Career"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11년 이상"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/tvCareer"
+            app:layout_constraintTop_toTopOf="@+id/tvCareer"
+            android:layout_marginStart="5dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRequestJob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="의뢰하기"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/light_purple"
+            app:cornerRadius="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Job"
+            app:rippleColor="@color/ripple_color"
+            app:strokeColor="@color/white"
+            app:strokeWidth="0.5dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

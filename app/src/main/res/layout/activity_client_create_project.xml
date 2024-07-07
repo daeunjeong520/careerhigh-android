@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ProjectUpload">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topBar"
+        style="@style/CustomToolbarStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:padding="10dp"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+            style="@style/ToolbarTextStyle"
+            android:text="프로젝트 등록" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/tvCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="프로젝트 이름"
+                style="@style/BlackBold16Text"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <EditText
+                android:id="@+id/CompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="프로젝트 이름"
+                app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvJobGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="직군"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/CompanyName" />
+
+            <Spinner
+                android:id="@+id/spinnerJobGroup"
+                style="@style/SpinnerStyle"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvJobGroup" />
+
+            <TextView
+                android:id="@+id/tvJob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="직무"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/spinnerJobGroup" />
+
+            <Spinner
+                android:id="@+id/spinnerJob"
+                style="@style/SpinnerStyle"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvJob" />
+
+            <TextView
+                android:id="@+id/tvWorkStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="근무 방식"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/spinnerJob" />
+
+            <Spinner
+                android:id="@+id/spinnerWorkStyle"
+                style="@style/SpinnerStyle"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvWorkStyle" />
+
+            <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="시작 예정일"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/spinnerWorkStyle" />
+
+            <DatePicker
+                android:id="@+id/datePickerStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:datePickerMode="calendar"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStartDate"/>
+
+            <TextView
+                android:id="@+id/tvTerm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="예상 기간"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/datePickerStartDate" />
+
+            <EditText
+                android:id="@+id/Term"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="0주 혹은 0개월"
+                app:layout_constraintTop_toBottomOf="@id/tvTerm"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvSalary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="예상 금액"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/Term" />
+
+            <EditText
+                android:id="@+id/Salary"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="000만원 ~ 000만원"
+                app:layout_constraintTop_toBottomOf="@id/tvSalary"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvJobSkill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="스킬"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/Salary" />
+
+            <EditText
+                android:id="@+id/JobSkill"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Java, Spring Framework ..."
+                app:layout_constraintTop_toBottomOf="@id/tvJobSkill"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvWantCareer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="희망 경력"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/JobSkill" />
+
+            <EditText
+                android:id="@+id/WantCareer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="0년 이상"
+                app:layout_constraintTop_toBottomOf="@id/tvWantCareer"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvProjectDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="프로젝트 상세 설명"
+                style="@style/BlackBold16Text"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/WantCareer"
+                />
+
+            <EditText
+                android:id="@+id/ProjectDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="프로젝트 상세 설명 (5000자 이하)"
+                android:inputType="textMultiLine"
+                android:maxLength="5000"
+                android:minLines="3"
+                app:layout_constraintTop_toBottomOf="@id/tvProjectDescription"
+                android:padding="8dp" />
+
+            <Button
+                android:id="@+id/btnProjectApply"
+                android:layout_width="match_parent"
+                style="@style/PurpleOneButton"
+                android:text="프로젝트 등록하기"
+                app:layout_constraintTop_toBottomOf="@id/ProjectDescription"
+                android:layout_marginTop="24dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
