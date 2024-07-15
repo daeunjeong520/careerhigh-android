@@ -57,11 +57,11 @@ class ClientMainActivity: AppCompatActivity() {
 
 
         // 메인 화면 -> 프로젝트 등록 화면
-//        binding..setOnClickListener {
-//            val intent = Intent(this@ClientMainActivity, ClientCreateProjectActivity::class.java)
-//            intent.putExtra("clientId", clientId)
-//            startActivity(intent)
-//        }
+        binding.projectUpload.setOnClickListener {
+            val intent = Intent(this@ClientMainActivity, ClientCreateProjectActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
     private fun getAllFreelancers() {

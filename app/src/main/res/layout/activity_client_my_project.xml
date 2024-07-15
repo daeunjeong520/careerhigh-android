@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ClientMyProject">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topBar"
+        style="@style/CustomToolbarStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:padding="10dp"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+            style="@style/ToolbarTextStyle"
+            android:text="내 프로젝트" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/btnOngoingProject"
+        android:layout_width="0dp"
+        style="@style/PurpleOneButton"
+        android:text="진행중인 프로젝트"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBar" />
+
+    <Button
+        android:id="@+id/btnUploadedProject"
+        android:layout_width="0dp"
+        style="@style/PurpleOneButton"
+        android:text="등록한 프로젝트"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/btnOngoingProject"
+        app:layout_constraintEnd_toEndOf="@id/btnOngoingProject"
+        app:layout_constraintTop_toBottomOf="@id/btnOngoingProject" />
+
+    <Button
+        android:id="@+id/btnFinishedProject"
+        android:layout_width="0dp"
+        style="@style/PurpleOneButton"
+        android:text="완료한 프로젝트"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/btnOngoingProject"
+        app:layout_constraintEnd_toEndOf="@id/btnOngoingProject"
+        app:layout_constraintTop_toBottomOf="@id/btnUploadedProject" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/projectUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="@color/purple"
+        android:contentDescription="Project Upload"
+        app:maxImageSize="32dp"
+        android:src="@drawable/ic_plus"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/myProjects"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_my_projects" />
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/myPage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_my_page" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRecommendedProject"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/white"
+    app:strokeColor="@color/dark_gray"
+    app:strokeWidth="1dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/ProjectTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="웹앱 자바 개발자 - Java, Spring Framework"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btnBookmark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBookmark"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:backgroundTint="@color/white"
+            app:icon="@drawable/ic_bookmark_border"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="@color/black"
+            app:rippleColor="@color/ripple_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ProjectJobGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개발 >"
+            android:textSize="14sp"
+            android:textColor="@color/purple"
+            app:layout_constraintTop_toBottomOf="@id/ProjectTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/ProjectJob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 서버 개발자"
+            android:textSize="14sp"
+            android:textColor="@color/purple"
+            app:layout_constraintTop_toBottomOf="@+id/ProjectTitle"
+            app:layout_constraintStart_toEndOf="@+id/ProjectJobGroup"
+            android:layout_marginTop="8dp"
+            />
+
+        <TextView
+            android:id="@+id/WorkStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원격/상주"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/ProjectJob"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvSalary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 금액:"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/WorkStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/Salary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="400만원 ~ 500만원"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/tvSalary"
+            app:layout_constraintTop_toTopOf="@+id/tvSalary"
+            android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:id="@+id/tvProjectStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예정 시작일:"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tvSalary"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp" />
+
+
+        <TextView
+            android:id="@+id/ProjectStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024-04-05"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/tvProjectStartDate"
+            app:layout_constraintTop_toTopOf="@+id/tvProjectStartDate"
+            android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:id="@+id/period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ProjectStartDate"
+            android:text="  (5개월)"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/Salary"
+            android:textColor="@color/dark_gray"
+            android:layout_marginTop="3dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

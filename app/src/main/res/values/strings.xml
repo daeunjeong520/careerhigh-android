@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">careerhigh</string>
+    <string-array name="job_group">
+        <item>개발</item>
+        <item>디자인</item>
+    </string-array>
+    <string-array name="work_style">
+        <item>원격</item>
+        <item>상주</item>
+        <item>원격/상주</item>
+    </string-array>
 </resources>

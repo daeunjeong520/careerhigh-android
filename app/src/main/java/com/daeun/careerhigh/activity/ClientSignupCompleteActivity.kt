@@ -24,10 +24,9 @@ class ClientSignupCompleteActivity: AppCompatActivity() {
         binding.clientNameText.text = name
 
 
-        // 클라이언트 메인 페이지로 이동
+        // 로그인 페이지로 이동
         binding.btnStart.setOnClickListener {
-            val intent = Intent(this@ClientSignupCompleteActivity, ClientMainActivity::class.java)
-            intent.putExtra("clientId", clientId)
+            val intent = Intent(this@ClientSignupCompleteActivity, ClientLoginActivity::class.java)
             startActivity(intent)
         }
     }

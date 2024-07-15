@@ -87,13 +87,23 @@
                 android:layout_marginTop="18dp"
                 app:layout_constraintTop_toBottomOf="@id/spinnerJobGroup" />
 
-            <Spinner
-                android:id="@+id/spinnerJob"
-                style="@style/SpinnerStyle"
+<!--            <Spinner-->
+<!--                android:id="@+id/spinnerJob"-->
+<!--                style="@style/SpinnerStyle"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvJob" />-->
+            <EditText
+                android:id="@+id/Job"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvJob" />
+                android:background="@drawable/edittext_border"
+                android:hint="직무"
+                app:layout_constraintTop_toBottomOf="@id/tvJob"
+                android:padding="8dp" />
+
 
             <TextView
                 android:id="@+id/tvWorkStyle"
@@ -102,7 +112,7 @@
                 android:text="근무 방식"
                 style="@style/BlackBold16Text"
                 android:layout_marginTop="18dp"
-                app:layout_constraintTop_toBottomOf="@id/spinnerJob" />
+                app:layout_constraintTop_toBottomOf="@id/Job" />
 
             <Spinner
                 android:id="@+id/spinnerWorkStyle"
@@ -145,7 +155,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_border"
-                android:hint="0주 혹은 0개월"
+                android:hint="0개월"
                 app:layout_constraintTop_toBottomOf="@id/tvTerm"
                 android:padding="8dp" />
 
@@ -164,7 +174,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_border"
-                android:hint="000만원 ~ 000만원"
+                android:hint="000만원"
                 app:layout_constraintTop_toBottomOf="@id/tvSalary"
                 android:padding="8dp" />
 
@@ -202,7 +212,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_border"
-                android:hint="0년 이상"
+                android:hint="0년"
                 app:layout_constraintTop_toBottomOf="@id/tvWantCareer"
                 android:padding="8dp" />
 

@@ -29,10 +29,15 @@
         <activity android:name=".activity.ClientSignupCompleteActivity" />
         <activity android:name=".activity.ClientProfileCreateActivity" />
         <activity android:name=".activity.ClientMainActivity" />
-        <activity android:name=".activity.ClientCreateProjectActivity" />
         <activity android:name=".activity.KeywordSearchActivity" />
         <activity android:name=".activity.SearchFreelancerResultActivity" />
         <activity android:name=".activity.FreelancerDetailActivity" />
+
+        <activity android:name=".activity.ClientCreateProjectActivity" />
+        <activity android:name=".activity.ClientCreateProjectCompleteActivity" />
+        <activity android:name=".activity.ClientMyProjectActivity" />
+
+        <activity android:name=".activity.ProjectCreateListActivity" />
     </application>
 
 </manifest>
