@@ -17,23 +17,28 @@ class ClientMyProjectActivity:AppCompatActivity() {
         setContentView(binding.root)
 
         val clientId = intent.getLongExtra("clientId", 1L)
-        val projectId = intent.getLongExtra("projectId", 1L)
 
-        // 진행중인 프로젝트(ONGOING)
+        // TODO: 진행중인 프로젝트(ONGOING)
 
         // 등록한 프로젝트(CREATE)
         binding.btnUploadedProject.setOnClickListener {
             val intent = Intent(this@ClientMyProjectActivity, ProjectCreateListActivity::class.java)
             intent.putExtra("clientId", clientId)
-            intent.putExtra("projectId", projectId)
             startActivity(intent);
         }
 
-        // 완료한 프로젝트(COMPLETE)
+        // TODO: 완료한 프로젝트(COMPLETE)
 
         // 프로젝트 등록 버튼
         binding.projectUpload.setOnClickListener {
             val intent = Intent(this@ClientMyProjectActivity, ClientCreateProjectActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
+
+        // 메인 화면
+        binding.home.setOnClickListener {
+            val intent = Intent(this@ClientMyProjectActivity, ClientMainActivity::class.java)
             intent.putExtra("clientId", clientId)
             startActivity(intent)
         }

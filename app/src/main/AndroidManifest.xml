@@ -38,6 +38,12 @@
         <activity android:name=".activity.ClientMyProjectActivity" />
 
         <activity android:name=".activity.ProjectCreateListActivity" />
-    </application>
+        <activity android:name=".activity.ProjectCreateDetailActivity" />
 
+        <activity android:name=".activity.ApplyFreelancerListActivity" />
+        <activity android:name=".activity.ChoiceRequestProjectActivity" />
+        <activity android:name=".activity.ApplyProjectDetailActivity" />
+        <activity android:name=".activity.ApplyProjectCompleteActivity" />
+        <activity android:name=".activity.CommissionFreelancerListActivity" />
+    </application>
 </manifest>

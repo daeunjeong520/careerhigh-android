@@ -62,6 +62,13 @@ class ClientMainActivity: AppCompatActivity() {
             intent.putExtra("clientId", clientId)
             startActivity(intent)
         }
+
+        // 메인화면 -> 프로젝트 관리 화면
+        binding.myProjects.setOnClickListener {
+            val intent = Intent(this@ClientMainActivity, ClientMyProjectActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
     private fun getAllFreelancers() {

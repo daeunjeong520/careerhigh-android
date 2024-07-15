@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daeun.careerhigh.adapter.ProjectAdapter
 import com.daeun.careerhigh.api.ProjectService
-import com.daeun.careerhigh.databinding.ActivityProjectCreateListBinding
+import com.daeun.careerhigh.databinding.ActivityApplyProjectDetailBinding
+import com.daeun.careerhigh.databinding.ActivityChoiceRequestProjectBinding
 import com.daeun.careerhigh.vo.response.ProjectInfo
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,12 +16,11 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ProjectCreateListActivity:AppCompatActivity() {
+class ChoiceRequestProjectActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityProjectCreateListBinding
+    private lateinit var binding: ActivityChoiceRequestProjectBinding
     private lateinit var projectAdapter: ProjectAdapter
 
-    // retrofit 객체 생성
     val retrofit = Retrofit.Builder()
         .baseUrl("http://10.0.2.2:8080/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -28,15 +28,20 @@ class ProjectCreateListActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProjectCreateListBinding.inflate(layoutInflater)
+        binding = ActivityChoiceRequestProjectBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val clientId = intent.getLongExtra("clientId", 1L)
+        val freelancerId = intent.getLongExtra("freelancerId", 1L)
+
+        Log.e("ChoiceRequestProjectActivity", "clientId: ${clientId}")
+        Log.e("ChoiceRequestProjectActivity", "freelancerId: ${freelancerId}")
 
         projectAdapter = ProjectAdapter {
-            val intent = Intent(this@ProjectCreateListActivity, ProjectCreateDetailActivity::class.java)
-            intent.putExtra("projectId", it.projectId)
+            val intent = Intent(this@ChoiceRequestProjectActivity, ApplyProjectDetailActivity::class.java)
             intent.putExtra("clientId", clientId)
+            intent.putExtra("freelancerId", freelancerId)
+            intent.putExtra("projectId", it.projectId)
             startActivity(intent)
         }
 
@@ -45,21 +50,14 @@ class ProjectCreateListActivity:AppCompatActivity() {
             adapter = projectAdapter
         }
 
-        val status = "CREATE"
-        createProjectList(clientId, status)
-
-        // 메인화면으로 이동
-        binding.home.setOnClickListener {
-            val intent = Intent(this@ProjectCreateListActivity, ClientMainActivity::class.java)
-            intent.putExtra("clientId", clientId)
-            startActivity(intent)
-        }
+        createProjectList(clientId, "CREATE")
     }
 
     private fun createProjectList(clientId: Long, status: String) {
         val projectService = retrofit.create(ProjectService::class.java)
 
-        projectService.createProjectList(clientId, status).enqueue(object: Callback<List<ProjectInfo>> {
+        projectService.createProjectList(clientId, status).enqueue(object:
+            Callback<List<ProjectInfo>> {
             override fun onResponse(call: Call<List<ProjectInfo>>, response: Response<List<ProjectInfo>>) {
                 Log.e("ProjectCreateListActivity", "project List=${response.body().toString()}")
 

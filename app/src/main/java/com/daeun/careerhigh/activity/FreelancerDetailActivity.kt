@@ -1,10 +1,12 @@
 package com.daeun.careerhigh.activity
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.daeun.careerhigh.api.FreelancerService
+import com.daeun.careerhigh.databinding.ActivityChoiceRequestProjectBinding
 import com.daeun.careerhigh.databinding.ActivityFreelancerDetailBinding
 import com.daeun.careerhigh.vo.response.FreelancerDetail
 import retrofit2.Call
@@ -35,6 +37,14 @@ class FreelancerDetailActivity: AppCompatActivity() {
         Log.e("FreelancerDetailActivity", "freelancerId: ${freelancerId}")
 
         getFreelancer(freelancerId)
+
+        // 프리랜서 상세화면 -> 의로 프로젝트 고르기 화면
+        binding.btnRequest.setOnClickListener {
+            val intent = Intent(this@FreelancerDetailActivity, ChoiceRequestProjectActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            intent.putExtra("freelancerId", freelancerId)
+            startActivity(intent)
+        }
     }
 
     // 프리랜서 상세 조회
