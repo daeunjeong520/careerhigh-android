@@ -31,7 +31,8 @@ class CommissionFreelancerListActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         val clientId = intent.getLongExtra("clientId", 1L)
-        Log.e("CommissionFreelancerListActivity", "clientId: ${clientId}")
+        val projectId = intent.getLongExtra("projectId", 1L)
+        Log.e("CommissionFreelancerListActivity", "clientId: ${clientId}, projectId: ${projectId}")
 
         freelancerAdapter = FreelancerAdapter {
             // TODO: 클릭 시 프리랜서 상세 화면
@@ -42,13 +43,13 @@ class CommissionFreelancerListActivity: AppCompatActivity() {
             adapter = freelancerAdapter
         }
 
-        requestFreelancerList(clientId)
+        requestFreelancerList(projectId)
     }
 
-    private fun requestFreelancerList(clientId: Long) {
+    private fun requestFreelancerList(projectId: Long) {
         val projectService = retrofit.create(ProjectService::class.java)
 
-        projectService.requestFreelancerList(clientId, "CREATE", "APPLIED")
+        projectService.getCommissionFreelancerList(projectId)
             .enqueue(object: Callback<List<FreelancerInfo>> {
                 override fun onResponse(call: Call<List<FreelancerInfo>>, response: Response<List<FreelancerInfo>>) {
                     Log.e("CommissionFreelancerListActivity", "freelancerList = ${response.body().toString()}")

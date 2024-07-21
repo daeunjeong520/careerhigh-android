@@ -30,6 +30,6 @@ interface ProjectService {
     @POST("api/projects/request")
     fun requestProject(@Body projectRequestRequest: ProjectRequestRequest): Call<ProjectRequestResponse>
 
-    @GET("api/clients/{clientId}/projects/request")
-    fun requestFreelancerList(@Path("clientId") clientId: Long, @Query("clientStatus") clientStatus: String, @Query("freelancerStatus") freelancerStatus: String): Call<List<FreelancerInfo>>
+    @GET("api/projects/{projectId}/commission")
+    fun getCommissionFreelancerList(@Path("projectId") projectId: Long): Call<List<FreelancerInfo>>
 }

@@ -4,12 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class ProjectRequestResponse(
 
-    @SerializedName("clientId")
-    val clientId: Long,
+    @SerializedName("freelancerProjectId")
+    val freelancerProjectId: Long,
 
-    @SerializedName("freelancerId")
-    val freelancerId: Long,
-
-    @SerializedName("projectId")
-    val projectId: Long
+    @SerializedName("status")
+    val status: String
 )

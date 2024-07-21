@@ -44,6 +44,7 @@ class ProjectCreateDetailActivity:AppCompatActivity() {
         binding.btnFreelancerCommission.setOnClickListener {
             val intent = Intent(this@ProjectCreateDetailActivity, CommissionFreelancerListActivity::class.java)
             intent.putExtra("clientId", clientId)
+            intent.putExtra("projectId", projectId)
             startActivity(intent)
         }
 

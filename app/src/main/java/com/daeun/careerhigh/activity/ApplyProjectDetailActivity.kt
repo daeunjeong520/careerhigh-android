@@ -38,11 +38,11 @@ class ApplyProjectDetailActivity: AppCompatActivity() {
         createProjectDetail(projectId)
 
         binding.btnProjectApply.setOnClickListener {
-            requestProject(projectId, freelancerId)
+            requestProject(projectId, freelancerId, clientId)
         }
     }
 
-    private fun requestProject(projectId: Long, freelancerId: Long) {
+    fun requestProject(projectId: Long, freelancerId: Long, clientId: Long) {
         val projectService = retrofit.create(ProjectService::class.java)
 
         val request = ProjectRequestRequest(freelancerId, projectId)
@@ -52,15 +52,16 @@ class ApplyProjectDetailActivity: AppCompatActivity() {
                 Log.e("ApplyProjectDetailActivity", "project = ${response.body().toString()}")
                 Toast.makeText(this@ApplyProjectDetailActivity, "프로젝트 의뢰가 완료되었습니다", Toast.LENGTH_SHORT).show()
 
-                val clientId = response.body()?.clientId
-                val freelancerId = response.body()?.freelancerId
-                val projectId = response.body()?.projectId
+                val freelancerProjectId = response.body()?.freelancerProjectId
+                val status = response.body()?.status
 
                 // 프로젝트 의뢰 완료화면으로 이동
                 val intent = Intent(this@ApplyProjectDetailActivity, ApplyProjectCompleteActivity::class.java)
                 intent.putExtra("clientId", clientId)
                 intent.putExtra("freelancerId", freelancerId)
                 intent.putExtra("projectId", projectId)
+                intent.putExtra("freelancerProjectId", freelancerProjectId)
+                intent.putExtra("status", status)
                 startActivity(intent)
             }
 
