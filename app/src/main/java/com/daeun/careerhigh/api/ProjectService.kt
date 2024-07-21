@@ -1,10 +1,12 @@
 package com.daeun.careerhigh.api
 
 import com.daeun.careerhigh.vo.request.ProjectCreateRequest
+import com.daeun.careerhigh.vo.request.ProjectDiscussionRequest
 import com.daeun.careerhigh.vo.request.ProjectRequestRequest
 import com.daeun.careerhigh.vo.response.FreelancerInfo
 import com.daeun.careerhigh.vo.response.ProjectCreateDetail
 import com.daeun.careerhigh.vo.response.ProjectCreateResponse
+import com.daeun.careerhigh.vo.response.ProjectDiscussionResponse
 import com.daeun.careerhigh.vo.response.ProjectInfo
 import com.daeun.careerhigh.vo.response.ProjectRequestResponse
 import retrofit2.Call
@@ -27,9 +29,19 @@ interface ProjectService {
     @GET("api/projects/create/{projectId}")
     fun createProjectDetail(@Path("projectId") projectId: Long): Call<ProjectCreateDetail>
     @Headers("Content-Type: application/json")
-    @POST("api/projects/request")
+    @POST("api/projects/commission")
     fun requestProject(@Body projectRequestRequest: ProjectRequestRequest): Call<ProjectRequestResponse>
 
     @GET("api/projects/{projectId}/commission")
     fun getCommissionFreelancerList(@Path("projectId") projectId: Long): Call<List<FreelancerInfo>>
+
+    @GET("api/projects/{projectId}/apply")
+    fun getApplyFreelancerList(@Path("projectId") projectId: Long): Call<List<FreelancerInfo>>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/projects/discussion")
+    fun discussionProject(@Body projectDiscussionRequest: ProjectDiscussionRequest): Call<ProjectDiscussionResponse>
+
+    @GET("api/projects/{projectId}/discussion")
+    fun discussionFreelancerList(@Path("projectId") projectId: Long): Call<List<FreelancerInfo>>
 }

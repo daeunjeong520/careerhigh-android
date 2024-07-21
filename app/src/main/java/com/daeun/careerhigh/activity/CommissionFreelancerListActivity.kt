@@ -1,5 +1,6 @@
 package com.daeun.careerhigh.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * 의뢰한 프리랜서 목록(등록한 프로젝트 -> 프로젝트 선택 -> 지원한 프리랜서)
+ */
 class CommissionFreelancerListActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityCommissionFreelancerListBinding
@@ -35,7 +39,11 @@ class CommissionFreelancerListActivity: AppCompatActivity() {
         Log.e("CommissionFreelancerListActivity", "clientId: ${clientId}, projectId: ${projectId}")
 
         freelancerAdapter = FreelancerAdapter {
-            // TODO: 클릭 시 프리랜서 상세 화면
+            val intent = Intent(this@CommissionFreelancerListActivity, CommissionFreelancerDetailActivity::class.java)
+            intent.putExtra("freelancerId", it.freelancerId)
+            intent.putExtra("clientId", clientId)
+            intent.putExtra("projectId", projectId)
+            startActivity(intent)
         }
 
         binding.recyclerView.apply {
@@ -43,10 +51,10 @@ class CommissionFreelancerListActivity: AppCompatActivity() {
             adapter = freelancerAdapter
         }
 
-        requestFreelancerList(projectId)
+        commissionFreelancerList(projectId)
     }
 
-    private fun requestFreelancerList(projectId: Long) {
+    private fun commissionFreelancerList(projectId: Long) {
         val projectService = retrofit.create(ProjectService::class.java)
 
         projectService.getCommissionFreelancerList(projectId)

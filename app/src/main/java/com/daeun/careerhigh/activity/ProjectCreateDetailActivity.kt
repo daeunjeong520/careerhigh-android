@@ -32,7 +32,7 @@ class ProjectCreateDetailActivity:AppCompatActivity() {
 
         createProjectDetail(projectId)
 
-        // 등록한 프로젝트 상세 화면 -> 지원한 프리랜서 목록
+        //등록한 프로젝트 상세 화면 -> 지원한 프리랜서 목록
         binding.btnFreelancerApply.setOnClickListener {
             val intent = Intent(this@ProjectCreateDetailActivity, ApplyFreelancerListActivity::class.java)
             intent.putExtra("clientId", clientId)
@@ -40,9 +40,17 @@ class ProjectCreateDetailActivity:AppCompatActivity() {
             startActivity(intent)
         }
 
-        // TODO: 등록한 프로젝트 상세 화면 -> 의뢰한 프리랜서 목록
+        // 등록한 프로젝트 상세 화면 -> 의뢰한 프리랜서 목록
         binding.btnFreelancerCommission.setOnClickListener {
             val intent = Intent(this@ProjectCreateDetailActivity, CommissionFreelancerListActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            intent.putExtra("projectId", projectId)
+            startActivity(intent)
+        }
+
+        // 등록한 프로젝트 상세화면 -> 협의 중인 프리랜서 목록
+        binding.btnFreelancerDiscuss.setOnClickListener {
+            val intent = Intent(this@ProjectCreateDetailActivity, DiscussionFreelancerListActivity::class.java)
             intent.putExtra("clientId", clientId)
             intent.putExtra("projectId", projectId)
             startActivity(intent)

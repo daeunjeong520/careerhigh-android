@@ -6,9 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daeun.careerhigh.adapter.ApplyFreelancerAdapter
-import com.daeun.careerhigh.adapter.FreelancerAdapter
 import com.daeun.careerhigh.api.ProjectService
-import com.daeun.careerhigh.databinding.ActivityApplyFreelancerListBinding
+import com.daeun.careerhigh.databinding.ActivityDiscussionFreelancerListBinding
 import com.daeun.careerhigh.vo.response.FreelancerInfo
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,11 +16,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * 지원한 프리랜서 목록(등록한 프로젝트 -> 프로젝트 선택 -> 지원한 프리랜서)
+ * 협의 중인 프리랜서 목록
  */
-class ApplyFreelancerListActivity: AppCompatActivity() {
+class DiscussionFreelancerListActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityApplyFreelancerListBinding
+    private lateinit var binding: ActivityDiscussionFreelancerListBinding
     private lateinit var freelancerAdapter: ApplyFreelancerAdapter
 
     val retrofit = Retrofit.Builder()
@@ -29,45 +28,40 @@ class ApplyFreelancerListActivity: AppCompatActivity() {
         .addConverterFactory(GsonConverterFactory.create())
         .build();
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityApplyFreelancerListBinding.inflate(layoutInflater)
+        binding = ActivityDiscussionFreelancerListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val clientId = intent.getLongExtra("clientId", 1L)
         val projectId = intent.getLongExtra("projectId", 1L)
-        Log.e("ApplyFreelancerListActivity", "clientId: ${clientId}, projectId: ${projectId}")
+        Log.e("DiscussionFreelancerListActivity", "clientId: ${clientId}, projectId: ${projectId}")
 
         freelancerAdapter = ApplyFreelancerAdapter {
-            val intent = Intent(this@ApplyFreelancerListActivity, ApplyFreelancerDetailActivity::class.java)
-            intent.putExtra("freelancerId", it.freelancerId)
-            intent.putExtra("projectId", projectId)
-            intent.putExtra("clientId", clientId)
-
-            startActivity(intent)
+            // TODO: 협의중인 프리랜서 상세
         }
 
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@ApplyFreelancerListActivity)
+            layoutManager = LinearLayoutManager(this@DiscussionFreelancerListActivity)
             adapter = freelancerAdapter
         }
 
-        applyFreelancerList(projectId)
+        discussionFreelancerList(projectId)
+
     }
 
-    private fun applyFreelancerList(projectId: Long) {
+    private fun discussionFreelancerList(projectId: Long) {
         val projectService = retrofit.create(ProjectService::class.java)
 
-        projectService.getApplyFreelancerList(projectId)
+        projectService.discussionFreelancerList(projectId)
             .enqueue(object: Callback<List<FreelancerInfo>> {
                 override fun onResponse(call: Call<List<FreelancerInfo>>, response: Response<List<FreelancerInfo>>) {
-                    Log.e("ApplyFreelancerListActivity", "freelancerList = ${response.body().toString()}")
+                    Log.e("DiscussionFreelancerListActivity", "freelancerList = ${response.body().toString()}")
                     freelancerAdapter.submitList(response.body())
                 }
 
                 override fun onFailure(call: Call<List<FreelancerInfo>>, t: Throwable) {
-                    Log.e("ApplyFreelancerListActivity", t.toString())
+                    Log.e("DiscussionFreelancerListActivity", t.toString())
                 }
             })
     }
