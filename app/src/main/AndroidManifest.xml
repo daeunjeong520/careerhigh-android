@@ -46,7 +46,9 @@
         <activity android:name=".activity.ApplyProjectDetailActivity" />
         <activity android:name=".activity.ApplyProjectCompleteActivity" />
         <activity android:name=".activity.CommissionFreelancerListActivity" />
+        <activity android:name=".activity.CommissionFreelancerDetailActivity" />
         <activity android:name=".activity.ApplyAcceptCompleteActivity" />
         <activity android:name=".activity.DiscussionFreelancerListActivity" />
+        <activity android:name=".activity.DiscussingFreelancerDetailActivity" />
     </application>
 </manifest>

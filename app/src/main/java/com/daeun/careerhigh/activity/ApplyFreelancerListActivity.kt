@@ -54,6 +54,12 @@ class ApplyFreelancerListActivity: AppCompatActivity() {
         }
 
         applyFreelancerList(projectId)
+
+        binding.home.setOnClickListener {
+            val intent = Intent(this@ApplyFreelancerListActivity, ClientMainActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
     private fun applyFreelancerList(projectId: Long) {

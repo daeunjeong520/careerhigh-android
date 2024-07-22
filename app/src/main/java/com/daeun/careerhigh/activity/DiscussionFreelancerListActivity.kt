@@ -37,8 +37,13 @@ class DiscussionFreelancerListActivity: AppCompatActivity() {
         val projectId = intent.getLongExtra("projectId", 1L)
         Log.e("DiscussionFreelancerListActivity", "clientId: ${clientId}, projectId: ${projectId}")
 
+        // 협의 중인 프리랜서 목록 -> 협의 중 상세화면으로 이동
         freelancerAdapter = ApplyFreelancerAdapter {
-            // TODO: 협의중인 프리랜서 상세
+            val intent = Intent(this@DiscussionFreelancerListActivity, DiscussingFreelancerDetailActivity::class.java)
+            intent.putExtra("freelancerId", it.freelancerId)
+            intent.putExtra("clientId", clientId)
+            intent.putExtra("projectId", projectId)
+            startActivity(intent)
         }
 
         binding.recyclerView.apply {
@@ -48,6 +53,11 @@ class DiscussionFreelancerListActivity: AppCompatActivity() {
 
         discussionFreelancerList(projectId)
 
+        binding.home.setOnClickListener {
+            val intent = Intent(this@DiscussionFreelancerListActivity, ClientMainActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
     private fun discussionFreelancerList(projectId: Long) {

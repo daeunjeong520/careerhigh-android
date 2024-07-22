@@ -45,6 +45,12 @@ class FreelancerDetailActivity: AppCompatActivity() {
             intent.putExtra("freelancerId", freelancerId)
             startActivity(intent)
         }
+
+        binding.home.setOnClickListener {
+            val intent = Intent(this@FreelancerDetailActivity, ClientMainActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
     // 프리랜서 상세 조회

@@ -52,8 +52,17 @@ class CommissionFreelancerListActivity: AppCompatActivity() {
         }
 
         commissionFreelancerList(projectId)
+
+        binding.home.setOnClickListener {
+            val intent = Intent(this@CommissionFreelancerListActivity, ClientMainActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
+    /**
+     * 의뢰한 프리랜서 목록
+     */
     private fun commissionFreelancerList(projectId: Long) {
         val projectService = retrofit.create(ProjectService::class.java)
 

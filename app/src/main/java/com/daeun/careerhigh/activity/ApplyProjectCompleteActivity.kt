@@ -25,7 +25,7 @@ class ApplyProjectCompleteActivity: AppCompatActivity() {
         Log.e("ApplyProjectCompleteActivity", "freelancerProjectId: ${freelancerProjectId}, status: ${status}")
 
 
-        // TODO: 클라이언트 프로젝트 관리 페이지로 이동
+        // 클라이언트 프로젝트 관리 페이지로 이동
         val intent = Intent(this@ApplyProjectCompleteActivity, ClientMyProjectActivity::class.java)
         intent.putExtra("clientId", clientId)
         startActivity(intent)

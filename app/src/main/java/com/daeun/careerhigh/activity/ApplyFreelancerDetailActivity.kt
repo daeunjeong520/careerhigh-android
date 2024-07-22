@@ -10,8 +10,10 @@ import com.daeun.careerhigh.api.FreelancerService
 import com.daeun.careerhigh.api.ProjectService
 import com.daeun.careerhigh.databinding.ActivityApplyFreelancerDetailBinding
 import com.daeun.careerhigh.databinding.ActivityFreelancerDetailBinding
+import com.daeun.careerhigh.vo.request.ProjectCommissionCancelRequest
 import com.daeun.careerhigh.vo.request.ProjectDiscussionRequest
 import com.daeun.careerhigh.vo.response.FreelancerDetail
+import com.daeun.careerhigh.vo.response.ProjectCommissionCancelResponse
 import com.daeun.careerhigh.vo.response.ProjectDiscussionResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -50,6 +52,16 @@ class ApplyFreelancerDetailActivity: AppCompatActivity() {
             discussionProject(freelancerId, projectId, clientId);
         }
 
+        // 지원 거절
+        binding.btnDeny.setOnClickListener {
+            cancelApplyProject(freelancerId, projectId, clientId)
+        }
+
+        binding.home.setOnClickListener {
+            val intent = Intent(this@ApplyFreelancerDetailActivity, ClientMainActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
 
@@ -113,6 +125,28 @@ class ApplyFreelancerDetailActivity: AppCompatActivity() {
         })
     }
 
-    // TODO: 거절
+    // TODO: 지원 거절
+    private fun cancelApplyProject(freelancerId: Long, projectId: Long, clientId: Long) {
+        val projectService = retrofit.create(ProjectService::class.java)
+
+        val request = ProjectCommissionCancelRequest(freelancerId, projectId);
+        projectService.cancelCommissionProject(request).enqueue(object: Callback<ProjectCommissionCancelResponse> {
+            override fun onResponse(call: Call<ProjectCommissionCancelResponse>, response: Response<ProjectCommissionCancelResponse>) {
+                val result = response.body()?.result
+                Log.e("ApplyFreelancerDetailActivity", "result = ${result}")
+                Toast.makeText(this@ApplyFreelancerDetailActivity, "지원을 거절하였습니다.", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this@ApplyFreelancerDetailActivity, ApplyFreelancerListActivity::class.java)
+                intent.putExtra("clientId", clientId)
+                intent.putExtra("projectId", projectId)
+
+                startActivity(intent)
+            }
+
+            override fun onFailure(call: Call<ProjectCommissionCancelResponse>, t: Throwable) {
+                Log.e("ApplyFreelancerDetailActivity", t.toString())
+            }
+        })
+    }
 
 }

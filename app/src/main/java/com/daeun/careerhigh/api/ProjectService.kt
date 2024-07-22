@@ -1,9 +1,11 @@
 package com.daeun.careerhigh.api
 
+import com.daeun.careerhigh.vo.request.ProjectCommissionCancelRequest
 import com.daeun.careerhigh.vo.request.ProjectCreateRequest
 import com.daeun.careerhigh.vo.request.ProjectDiscussionRequest
 import com.daeun.careerhigh.vo.request.ProjectRequestRequest
 import com.daeun.careerhigh.vo.response.FreelancerInfo
+import com.daeun.careerhigh.vo.response.ProjectCommissionCancelResponse
 import com.daeun.careerhigh.vo.response.ProjectCreateDetail
 import com.daeun.careerhigh.vo.response.ProjectCreateResponse
 import com.daeun.careerhigh.vo.response.ProjectDiscussionResponse
@@ -44,4 +46,8 @@ interface ProjectService {
 
     @GET("api/projects/{projectId}/discussion")
     fun discussionFreelancerList(@Path("projectId") projectId: Long): Call<List<FreelancerInfo>>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/projects/commission/cancel")
+    fun cancelCommissionProject(@Body projectCommissionCancelRequest: ProjectCommissionCancelRequest): Call<ProjectCommissionCancelResponse>
 }

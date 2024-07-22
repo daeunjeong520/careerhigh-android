@@ -35,7 +35,7 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/btnCommissionCancel"
+        app:layout_constraintBottom_toTopOf="@id/btnRequest"
         app:layout_constraintTop_toBottomOf="@id/topBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +47,7 @@
                 android:id="@+id/profileImage"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/coco"
+                android:src="@drawable/userc"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,6 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
+                android:textStyle="bold"
                 android:text="홍길동"
                 app:layout_constraintEnd_toStartOf="@+id/btnBookmark"
                 app:layout_constraintStart_toEndOf="@id/profileImage"
@@ -92,6 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="직군/직무"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
                 android:layout_marginTop="12dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/profileImage" />
@@ -100,6 +103,8 @@
                 android:id="@+id/labelJobSkill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
                 android:text="스킬"
                 app:layout_constraintStart_toStartOf="@id/labelJobGroup"
                 app:layout_constraintTop_toBottomOf="@id/labelJobGroup" />
@@ -109,6 +114,8 @@
                 style="@style/Black14Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
                 android:text="경력"
                 app:layout_constraintStart_toStartOf="@id/labelJobGroup"
                 app:layout_constraintTop_toBottomOf="@id/labelJobSkill" />
@@ -117,17 +124,38 @@
                 android:id="@+id/labelStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/purple"
                 android:text="시작 가능일"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/labelJobGroup"
                 app:layout_constraintTop_toBottomOf="@id/labelCareer" />
+
+            <TextView
+                android:id="@+id/labelStarRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple"
+                android:text="평점"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/labelJobGroup"
+                app:layout_constraintTop_toBottomOf="@id/labelStartDate" />
 
             <TextView
                 android:id="@+id/JobGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="개발 > 서버 개발"
+                android:text="개발 > "
                 app:layout_constraintBaseline_toBaselineOf="@id/labelJobGroup"
                 app:layout_constraintStart_toStartOf="@id/StartDate" />
+
+            <TextView
+                android:id="@+id/Job"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="서버개발"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelJobGroup"
+                app:layout_constraintStart_toEndOf="@+id/JobGroup"
+                />
 
             <TextView
                 android:id="@+id/JobSkill"
@@ -136,6 +164,20 @@
                 android:text="Java, Spring Framework"
                 app:layout_constraintBaseline_toBaselineOf="@id/labelJobSkill"
                 app:layout_constraintStart_toStartOf="@id/StartDate" />
+
+            <TextView
+                android:id="@+id/Proficiency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="중급"
+                android:background="@color/light_purple"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelJobSkill"
+                app:layout_constraintStart_toEndOf="@+id/JobSkill"
+                />
 
             <TextView
                 android:id="@+id/Career"
@@ -154,22 +196,39 @@
                 app:layout_constraintBaseline_toBaselineOf="@id/labelStartDate"
                 app:layout_constraintStart_toEndOf="@id/labelStartDate" />
 
+            <TextView
+                android:id="@+id/StarRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:layout_marginStart="58dp"
+                android:background="@color/dark_gray"
+                android:textColor="@color/white"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/labelStarRating"
+                app:layout_constraintStart_toEndOf="@id/labelStarRating" />
+
+
 
             <TextView
                 android:id="@+id/labelFreelancerIntroduction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="50dp"
                 android:text="[상세 소개]"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelStartDate" />
 
+
             <TextView
-                android:id="@+id/ProjectDetail"
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="안녕하세요~~~"
+                android:text="서버 개발은 제가 가장 자신 있습니다!!"
                 app:layout_constraintStart_toStartOf="@id/labelJobGroup"
                 app:layout_constraintTop_toBottomOf="@id/labelFreelancerIntroduction" />
 
@@ -178,9 +237,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
                 android:text="[링크]"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ProjectDetail" />
+                app:layout_constraintTop_toBottomOf="@id/description" />
 
             <TextView
                 android:id="@+id/Link"

@@ -40,6 +40,12 @@ class ApplyProjectDetailActivity: AppCompatActivity() {
         binding.btnProjectApply.setOnClickListener {
             requestProject(projectId, freelancerId, clientId)
         }
+
+        binding.home.setOnClickListener {
+            val intent = Intent(this@ApplyProjectDetailActivity, ClientMainActivity::class.java)
+            intent.putExtra("clientId", clientId)
+            startActivity(intent)
+        }
     }
 
     fun requestProject(projectId: Long, freelancerId: Long, clientId: Long) {
