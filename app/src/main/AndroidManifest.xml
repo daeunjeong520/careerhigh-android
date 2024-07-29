@@ -50,5 +50,8 @@
         <activity android:name=".activity.ApplyAcceptCompleteActivity" />
         <activity android:name=".activity.DiscussionFreelancerListActivity" />
         <activity android:name=".activity.DiscussingFreelancerDetailActivity" />
+        <activity android:name=".activity.ProjectDiscussionCompleteActivity" />
+
+
     </application>
 </manifest>

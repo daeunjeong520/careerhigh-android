@@ -30,6 +30,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <!-- 검색창 -->
     <TextView
         android:id="@+id/tvSearch"
@@ -225,6 +226,4 @@
             android:adjustViewBounds="true"/>
 
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.daeun.careerhigh.adapter.ApplyFreelancerAdapter
 import com.daeun.careerhigh.adapter.FreelancerAdapter
 import com.daeun.careerhigh.api.ProjectService
 import com.daeun.careerhigh.databinding.ActivityCommissionFreelancerListBinding
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CommissionFreelancerListActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityCommissionFreelancerListBinding
-    private lateinit var freelancerAdapter: FreelancerAdapter
+    private lateinit var freelancerAdapter: ApplyFreelancerAdapter
 
     val retrofit = Retrofit.Builder()
         .baseUrl("http://10.0.2.2:8080/")
@@ -38,7 +39,7 @@ class CommissionFreelancerListActivity: AppCompatActivity() {
         val projectId = intent.getLongExtra("projectId", 1L)
         Log.e("CommissionFreelancerListActivity", "clientId: ${clientId}, projectId: ${projectId}")
 
-        freelancerAdapter = FreelancerAdapter {
+        freelancerAdapter = ApplyFreelancerAdapter {
             val intent = Intent(this@CommissionFreelancerListActivity, CommissionFreelancerDetailActivity::class.java)
             intent.putExtra("freelancerId", it.freelancerId)
             intent.putExtra("clientId", clientId)

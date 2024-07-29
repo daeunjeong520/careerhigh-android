@@ -3,12 +3,15 @@ package com.daeun.careerhigh.api
 import com.daeun.careerhigh.vo.request.ProjectCommissionCancelRequest
 import com.daeun.careerhigh.vo.request.ProjectCreateRequest
 import com.daeun.careerhigh.vo.request.ProjectDiscussionRequest
+import com.daeun.careerhigh.vo.request.ProjectDiscussionStatusRequest
 import com.daeun.careerhigh.vo.request.ProjectRequestRequest
 import com.daeun.careerhigh.vo.response.FreelancerInfo
 import com.daeun.careerhigh.vo.response.ProjectCommissionCancelResponse
 import com.daeun.careerhigh.vo.response.ProjectCreateDetail
 import com.daeun.careerhigh.vo.response.ProjectCreateResponse
+import com.daeun.careerhigh.vo.response.ProjectDiscussionDetail
 import com.daeun.careerhigh.vo.response.ProjectDiscussionResponse
+import com.daeun.careerhigh.vo.response.ProjectDiscussionStatusResponse
 import com.daeun.careerhigh.vo.response.ProjectInfo
 import com.daeun.careerhigh.vo.response.ProjectRequestResponse
 import retrofit2.Call
@@ -50,4 +53,12 @@ interface ProjectService {
     @Headers("Content-Type: application/json")
     @POST("api/projects/commission/cancel")
     fun cancelCommissionProject(@Body projectCommissionCancelRequest: ProjectCommissionCancelRequest): Call<ProjectCommissionCancelResponse>
+
+    @GET("api/projects/discussion/{projectId}")
+    fun getDiscussionProjectDetail(@Path("projectId") projectId: Long, @Query("freelancerId") freelancerId: Long): Call<ProjectDiscussionDetail>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/projects/discussion/client/status")
+    fun changeDiscussionProjectStatus(@Body projectDiscussionStatusRequest: ProjectDiscussionStatusRequest): Call<ProjectDiscussionStatusResponse>
+
 }
